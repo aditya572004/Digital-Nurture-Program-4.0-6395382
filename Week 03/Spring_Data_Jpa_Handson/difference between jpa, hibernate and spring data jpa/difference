@@ -1,0 +1,46 @@
+1. JPA (Java Persistence API) – Specification
+What it is: A standard interface/specification for ORM (Object-Relational Mapping) in Java.
+
+Provided by: Oracle as part of Java EE.
+
+Purpose: Defines how Java objects interact with relational databases (like mapping classes to tables).
+
+Does not provide actual implementation — only interfaces and annotations like:
+
+@Entity, @Table, @Id, @GeneratedValue
+Needs a provider (like Hibernate) to work.
+
+ 2. Hibernate – Implementation
+What it is: A popular implementation of the JPA specification.
+
+Provides additional features beyond JPA, like:
+
+Caching
+
+Dirty checking
+
+Custom SQL queries
+
+Uses JPA annotations and also has its own (e.g., @GenericGenerator)
+
+You can use Hibernate directly or through JPA interfaces.
+
+3. Spring Data JPA – Abstraction Layer
+
+A Spring framework module that simplifies JPA-based persistence.
+Built on top of:
+JPA (specification)
+
+Hibernate (or any other JPA provider)
+
+Main features:
+
+No boilerplate code for CRUD operations
+
+Auto implementation of DAO interfaces using method names:
+
+
+interface UserRepository extends JpaRepository<User, Long> {
+    List<User> findByLastName(String lastName);
+}
+Integrates with Spring Boot easily
